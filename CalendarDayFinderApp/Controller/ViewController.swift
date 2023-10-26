@@ -22,17 +22,14 @@ class ViewController: UIViewController {
     }
     
     func findWeekDay() {
-#warning("find day of the year on Find tap")
         
+        #warning("find day of the year on Find tap")
         //Calendar
         //DateCompontes
         //DateFormatter -> dateFormat
-        
         //Logic Calculation, it can't be 0
         //present alert if something went wrong
-        
         //Result is for presenting the Day of week
-        
         //Title Find to Clear(clear all text filed to "")
       
         
@@ -41,7 +38,7 @@ class ViewController: UIViewController {
               let yearString = yearTextField.text,
               !dayString.isEmpty, !monthString.isEmpty, !yearString.isEmpty,
               let day = Int(dayString), let month = Int(monthString), let year = Int(yearString) else {
-            print("Input is invalid")
+            basicAlert(title: "Invalid date", message: "Invalid date format. Please use dd/mm/yyyy format")
            
             return
         }
@@ -53,20 +50,16 @@ class ViewController: UIViewController {
            
             let calendar = Calendar.current
             let weekday = calendar.component(.weekday, from: date)
-            
             let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-            
             let weekdayName = weekdays[weekday - 1] //index
             
             resultBox.text = weekdayName
             yourDate = dateFormatter.string(from: date)
         } else {
-            print("Invalid date format")
+            basicAlert(title: "Invalid date", message: "Invalid date format. Please use dd/mm/yyyy format")
         }
         findButton.setTitle("Clear text", for: .normal)
-        dayTextField.text = ""
-            monthTextField.text = ""
-            yearTextField.text = ""//clear text
+        
     }
     
     @IBAction func findButtonTapped(_ sender: Any) {
@@ -77,7 +70,7 @@ class ViewController: UIViewController {
                 dayTextField.text = ""
                 monthTextField.text = ""
                 yearTextField.text = ""
-                resultBox.text = ""
+                resultBox.text = "Result"
                 findButton.setTitle("Find", for: .normal)
             }
     }
